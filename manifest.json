@@ -1,0 +1,13 @@
+{
+  "name": "Planche Prep Checklist",
+  "short_name": "Planche Workout",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#111",
+  "theme_color": "#111",
+  "icons": [{
+    "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Push-up_icon.svg/512px-Push-up_icon.svg.png",
+    "sizes": "512x512",
+    "type": "image/png"
+  }]
+}
