@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <title>Planche Prep Checklist</title>
+  <link rel="manifest" href="manifest.json" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #111;
+      color: #fff;
+      padding: 20px;
+      max-width: 600px;
+      margin: auto;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .exercise {
+      margin: 15px 0;
+      padding: 10px;
+      background: #222;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+    }
+    input[type="checkbox"] {
+      margin-right: 15px;
+      transform: scale(1.5);
+    }
+    label {
+      flex: 1;
+      font-size: 1.1em;
+    }
+    button {
+      width: 100%;
+      padding: 12px;
+      background: #444;
+      color: #fff;
+      font-size: 1em;
+      border: none;
+      border-radius: 6px;
+      margin-top: 20px;
+    }
+    button:hover {
+      background: #666;
+    }
+  </style>
+</head>
+<body>
+  <h1>🔥 Planche Prep Workout</h1>
+
+  <div class="exercise"><input type="checkbox" id="lean"><label for="lean">3x Planche Lean (15–25 sec)</label></div>
+  <div class="exercise"><input type="checkbox" id="decline"><label for="decline">3x Decline Push-Ups (10–12 reps)</label></div>
+  <div class="exercise"><input type="checkbox" id="dips"><label for="dips">2x Dips (10–15 reps)</label></div>
+  <div class="exercise"><input type="checkbox" id="tuck"><label for="tuck">3x Tuck Hold (10–20 sec)</label></div>
+  <div class="exercise"><input type="checkbox" id="core"><label for="core">Plank or Hollow Hold (choose 1)</label></div>
+
+  <button onclick="resetChecklist()">🔁 Reset</button>
+
+  <script>
+    const today = new Date().toDateString();
+    const lastVisit = localStorage.getItem('lastVisit');
+
+    if (lastVisit !== today) {
+      localStorage.clear();
+      localStorage.setItem('lastVisit', today);
+    }
+
+    document.querySelectorAll('input[type="checkbox"]').forEach(box => {
+      const id = box.id;
+      box.checked = localStorage.getItem(id) === 'true';
+      box.addEventListener('change', () => {
+        localStorage.setItem(id, box.checked);
+      });
+    });
+
+    function resetChecklist() {
+      document.querySelectorAll('input[type="checkbox"]').forEach(box => {
+        box.checked = false;
+        localStorage.setItem(box.id, false);
+      });
+    }
+  </script>
+</body>
+</html>
