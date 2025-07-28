@@ -62,6 +62,9 @@
   <button onclick="resetChecklist()">🔁 Reset</button>
 
   <script>
+    if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('sw.js');
+}
     const today = new Date().toDateString();
     const lastVisit = localStorage.getItem('lastVisit');
 
